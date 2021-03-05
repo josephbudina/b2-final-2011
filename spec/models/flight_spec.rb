@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe 'flight index page' do
+RSpec.describe Flight, type: :model do
   before :each do
     @denver = Flight.create(number: '1221' , date:  "08/03/20", departure_city: "Los Angeles", arrival_city: "Denver")
     @boston = Flight.create(number: '3321', date:  "08/20/20", departure_city: "Denver", arrival_city: "Boston")
@@ -7,13 +7,14 @@ describe 'flight index page' do
     @la = Flight.create(number: '1111', date:  "08/17/20", departure_city: "Reno", arrival_city: "Los Angeles")
   end
 
-  it 'shows each flight with attributes ordered by departure city' do
-    visit flights_path
+  describe 'relationships' do
+    it { should have_many :flight_passengers}
+    it { should have_many(:passengers).through(:flight_passengers)}
+  end
 
-    expect("Departure city: Boston").to appear_before("Departure city: Denver")
-    expect("Departure city: Denver").to appear_before("Departure city: Los Angeles")
-    expect("Departure city: Los Angeles").to appear_before("Departure city: Reno")
-    expect(page).to have_content("1221")
-    expect(page).to have_content("08/03/20")
+  describe 'Class methods' do
+    it ':: orders by depature' do
+      expect(Flight.all.order_by_departure).to eq([@reno,@boston,@denver,@la])
+    end
   end
 end
