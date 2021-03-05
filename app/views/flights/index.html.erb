@@ -1,0 +1,6 @@
+<% @flights.order_by_departure.each do |flight| %>
+Arrival city: <%= flight.arrival_city%><br>
+Date: <%= flight.date%><br>
+Departure city: <%= flight.departure_city%><br>
+Flight number: <%= flight.number%><br>
+<% end %>
