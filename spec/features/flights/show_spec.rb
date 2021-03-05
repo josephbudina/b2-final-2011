@@ -28,4 +28,19 @@ describe 'flight show page' do
 
     expect(page).to have_content("Average Age of Passengers: 21")
   end
+
+  it 'Has button to remove passenger from flight' do
+    visit flight_path(@denver)
+
+    expect(page).to have_content(@jess.name)
+
+    within("#passenger_id-#{@jess.id}") do
+      expect(page).to have_button("Remove Passenger")
+      click_on 'Remove Passenger'
+
+      expect(current_path).to eq(flight_path(@denver))
+    end
+
+    expect(page).to_not have_content(@jess.name)
+  end
 end

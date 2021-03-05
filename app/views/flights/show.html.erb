@@ -3,9 +3,12 @@
 <%= @flight.departure_city%>
 <%= @flight.number%>
 <% @flight.passengers.each do |passenger| %>
-  <% if passenger.age >= 18 %>
-    <%= passenger.name %>
-  <% end %>
+  <div id="passenger_id-<%= passenger.id%>">
+    <% if passenger.age >= 18 %>
+      <%= passenger.name %>
+    <%= button_to "Remove Passenger", flight_path(@flight), method: :delete, params: {passenger_id: passenger.id}%>
+    <% end %>
+  </div>
 <% end %>
 
 Average Age of Passengers: <%= @flight.find_average_passenger_age%>
