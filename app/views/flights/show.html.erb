@@ -1,0 +1,9 @@
+<%= @flight.date%>
+<%= @flight.arrival_city%>
+<%= @flight.departure_city%>
+<%= @flight.number%>
+<% @flight.passengers.each do |passenger| %>
+  <% if passenger.age >= 18 %>
+    <%= passenger.name %>
+  <% end %>
+<% end %>
