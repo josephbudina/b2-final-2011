@@ -11,4 +11,11 @@ class Flight < ApplicationRecord
     .average(:age)
     .to_i
   end
+
+  # def self.order_by_passenger_count
+  #   joins(:flight_passengers)
+  #   .group('flight_passengers.flight_id')
+  #   .select('flights.*, count(*) as passenger_count')
+  #   .order('passenger_count desc')
+  # end
 end

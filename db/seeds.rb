@@ -1,7 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+    @denver = Flight.create(number: '1221' , date:  "08/03/20", departure_city: "Los Angeles", arrival_city: "Denver")
+    @boston = Flight.create(number: '3321', date:  "08/20/20", departure_city: "Denver", arrival_city: "Boston")
+    @reno = Flight.create(number: '2727', date:  "08/19/20", departure_city: "Boston", arrival_city: "Reno")
+    @la = Flight.create(number: '1111', date:  "08/17/20", departure_city: "Reno", arrival_city: "Los Angeles")
+    @jane = @boston.passengers.create(name: "Jane", age: 12)
+    @jim = @boston.passengers.create(name: "Jim", age: 18)
+    @joe = @boston.passengers.create(name: "Joe", age: 27)
+    @jess = @boston.passengers.create(name: "Jess", age: 30)
+    @greg = @denver.passengers.create(name: "greg", age: 29)
+    @haley = @denver.passengers.create(name: "haley", age: 22)
+    @sue = @la.passengers.create(name: "sue", age: 24)
