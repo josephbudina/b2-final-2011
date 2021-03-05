@@ -22,4 +22,10 @@ describe 'flight show page' do
     expect(page).to have_content(@joe.name)
     expect(page).to_not have_content(@jane.name)
   end
+
+  it 'Shows average age of passengers' do
+    visit flight_path(@denver)
+
+    expect(page).to have_content("Average Age of Passengers: 21")
+  end
 end
